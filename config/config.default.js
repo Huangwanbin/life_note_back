@@ -22,6 +22,16 @@ module.exports = appInfo => {
   const userConfig = {
     // myAppName: 'egg',
   };
+  userConfig.security = {
+    csrf: {
+      enable: false
+    },
+    domainWhiteList:['*'],
+  };
+  userConfig.cors = {
+    origin: '*',
+    allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH,OPTIONS'
+  };
 
   return {
     ...config,
