@@ -9,5 +9,9 @@ module.exports = {
     cors : {
     enable: true,
     package: 'egg-cors'
-  }
+  },
+  // validate : {//不好用
+  //   enable: true,
+  //   package: 'egg-validate',
+  // }
 };
