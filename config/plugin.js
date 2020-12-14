@@ -10,6 +10,10 @@ module.exports = {
     enable: true,
     package: 'egg-cors'
   },
+  mysql : {
+    enable: true,
+    package: 'egg-mysql',
+  }
   // validate : {//不好用
   //   enable: true,
   //   package: 'egg-validate',
