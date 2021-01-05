@@ -27,7 +27,7 @@ class UserService extends Service {
         if (!user_id) return { code :401 , msg : '缺少user_id参数标识，请检查后再试!'}
         const user = await this.app.mysql.get('user_info',{'user_id':user_id})
         if (user) return {code :200 , data:user }
-        else return { msg : '未查找到该用户信息，请注册后再试！'}
+        else return { code: 400, msg : '未查找到该用户信息，请注册后再试！'}
     }
 }
 
