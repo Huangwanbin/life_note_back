@@ -26,11 +26,14 @@ module.exports = appInfo => {
     csrf: {
       enable: false
     },
-    domainWhiteList:['*'],
+    domainWhiteList:['http://localhost:3000'],
   };
   userConfig.cors = {
     origin: '*',
     allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH,OPTIONS'
+  };
+  userConfig.jwt = {
+    secret: '1433223',
   };
 
   return {

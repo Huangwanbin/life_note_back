@@ -4,7 +4,7 @@ const Controller = require('egg').Controller
 
 class homeController extends Controller {
     async userLogin (){
-        const { ctx,service } = this
+        const { ctx,service,app } = this
         //不好用
         // const createRule = {
         //     phone: { 
@@ -21,8 +21,17 @@ class homeController extends Controller {
         const req = Object.assign(ctx.request.body);
         const res = await service.user.login(req);
         let {code , msg ,data} = res
-        ctx.body= { code ,msg ,data}
-        ctx.status = 200
+        if (code == 200) {
+            const token = app.jwt.sign({
+                nick_name :req.phone
+            }, app.config.jwt.secret, {
+                expiresIn: '60s',
+             });
+            ctx.body= { code ,msg ,data ,token}
+        }else {
+            ctx.body= { code ,msg ,data }
+        }
+        ctx.status = code
     };
     async getUserInfo (){
         const { ctx , service } = this;
